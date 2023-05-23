@@ -37,7 +37,7 @@ public class BaseService : IBaseService
             switch (apiRequest.ApiType)
             {
                 case SD.ApiType.GET:
-                    message.Method = HttpMethod.Get;
+                    message.Method = HttpMethod.Post;
                     break;
                 case SD.ApiType.PUT:
                     message.Method = HttpMethod.Put;

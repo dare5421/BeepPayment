@@ -1,6 +1,8 @@
-﻿namespace BeepPayment.ConsumeAPI.Services.IService;
+﻿using BeepPayment.ConsumeAPI.Models.Dto;
+
+namespace BeepPayment.ConsumeAPI.Services.IService;
 
 public interface IBeepPayoutService
 {
-    
+    public Task<T> PostPayment<T>(PaymentPacketDto packet);
 }

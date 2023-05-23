@@ -1,11 +1,18 @@
 using BeepPayment.ConsumeAPI.Data;
+using BeepPayment.ConsumeAPI.Services;
+using BeepPayment.ConsumeAPI.Services.IService;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+{
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    
+    builder.Services.AddHttpClient<IBeepPayoutService, BeepPayoutService>();
+    builder.Services.AddScoped<IBeepPayoutService, BeepPayoutService>();
+}
 
 
 builder.Services.AddControllers();

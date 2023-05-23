@@ -1,7 +1,8 @@
 ﻿namespace BeepPayment.ConsumeAPI.Models.Dto;
 
-public class PostPaymentPacketDto : CredentialDto
+public class PostPaymentPacketDto //: CredentialDto
 {
+    
     //This is the product code used in identifying the service the customer is consuming e.g. TIGOAIRTIME
     public string ServiceCode { get; set; }
 
