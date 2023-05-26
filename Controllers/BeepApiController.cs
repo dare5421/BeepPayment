@@ -28,14 +28,22 @@ public class BeepApiController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<TransactionStatusDto>> PostPayment(PaymentPacketDto packet)
     {
-        
 
+        // {
+        //     HttpClient client = new HttpClient();
+        //     HttpResponseMessage response =
+        //         client.GetAsync("https://beep2.cellulant.africa:9001/paymentRouter/JSONV2/").Result;
+        //     
+        // }
+        //
+        //
+        
         var authStatus = new AuthStatus();
         // var function = packet.BeepFunctionDto;
         // var credential = packet.CredentialDto;
         // var postPaymentPacket = packet.PostPaymentPacketDto;
         //Authentiacation Check
-        if (packet.Payload.Credentials.Username != "sandboxUser" || packet.Payload.Credentials.Password!="sandboxPassword!")
+        if (packet.payload.credentials.username != "sandboxUser" || packet.payload.credentials.password!="sandboxPassword!")
         {
             authStatus.AuthStatusCode = 132;
             authStatus.AuthStatusDescription = SD.AuthStatusCode[132];
@@ -60,8 +68,9 @@ public class BeepApiController : ControllerBase
             
             var transactionStatus = new TransactionStatus();
             var response = await _beepService.PostPayment<TransactionStatusDto>(packet);
-
-            return Ok();
+            _response.Result = response;
+            
+            return Ok(_response);
 
         }
         

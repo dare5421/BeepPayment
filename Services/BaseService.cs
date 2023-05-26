@@ -30,13 +30,14 @@ public class BaseService : IBaseService
 
             if (apiRequest.Data != null)
             {
-                message.Content = new StringContent(JsonConvert
+                var str = JsonConvert.SerializeObject(apiRequest.Data);
+                message.Content = new StringContent(JsonConvert 
                     .SerializeObject(apiRequest.Data),Encoding.UTF8,"application/json");
             }
 
             switch (apiRequest.ApiType)
             {
-                case SD.ApiType.GET:
+                case SD.ApiType.POST:
                     message.Method = HttpMethod.Post;
                     break;
                 case SD.ApiType.PUT:
