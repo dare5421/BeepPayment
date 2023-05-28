@@ -24,4 +24,14 @@ public class BeepPayoutService : BaseService, IBeepPayoutService
             Url = beepUrl
         });
     }
+
+    public async Task<T> QueryBill<T>(QueryBillDto packet)
+    {
+        return await SendAsync<T>(new APIRequest()
+        {
+            ApiType = SD.ApiType.GET,
+            Data = packet,
+            Url = beepUrl
+        });
+    }
 }

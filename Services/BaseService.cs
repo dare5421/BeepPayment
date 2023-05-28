@@ -55,7 +55,8 @@ public class BaseService : IBaseService
             httpResponseMessage = await client.SendAsync(message);
 
             var apiContent = await httpResponseMessage.Content.ReadAsStringAsync();
-            var apiResponse = JsonConvert.DeserializeObject<T>(apiContent);
+            var normlizedApiContent = apiContent.Replace(@"\", "").Replace(@"""{", "{").Replace(@"}""", "}");
+            var apiResponse = JsonConvert.DeserializeObject<T>(normlizedApiContent);
 
             return apiResponse;
 
