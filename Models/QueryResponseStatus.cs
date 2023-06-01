@@ -20,16 +20,17 @@ public class QueryResponseStatus
 
 public class ExtraDataBundle
 {
-    [JsonProperty(PropertyName="GH-MTN-Plans")]
-    public MTN_Plans[] Plans { get; set; }
+    // [JsonProperty(PropertyName="GH-MTN-Plans")]
+    public List<MTN_Plans> Plans { get; set; }
 }
 
-public class MTN_Plans
+public class MTN_Plans  
 {
     public string BundleName { get; set; }
     public string Value { get; set; }
     public string Price { get; set; }
     public string Validity { get; set; }
+    
     public ExtraDataPlan ExtraData { get; set; }
 }
 

@@ -3,5 +3,5 @@
 public class QueryResponseDto
 {
     public AuthStatus authStatus { get; set; }
-    public QueryResponseStatus[] results { get; set; }
+    public List<QueryResponseStatus> results { get; set; }
 }
